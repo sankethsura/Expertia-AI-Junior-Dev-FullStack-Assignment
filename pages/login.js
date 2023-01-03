@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { auth } from "../components/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRef } from "react";
-import noteContext from "../components/context/notecontext";
+import noteContext from "../components/context/noteContext";
 
 const Login = (props) => {
   //--taking state from context API--

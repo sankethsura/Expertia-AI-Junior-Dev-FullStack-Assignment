@@ -2,7 +2,7 @@ import React from "react";
 import { BsDot } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { useRef } from "react";
-import noteContext from "../components/context/notecontext";
+import noteContext from "../components/context/noteContext";
 import { useContext } from "react";
 import { auth } from "../components/firebase";
 import { signOut } from "firebase/auth";

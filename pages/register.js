@@ -5,7 +5,7 @@ import Image from "next/image";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { useRouter } from "next/router";
-import noteContext from "../components/context/notecontext";
+import noteContext from "../components/context/noteContext";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../components/firebase";
 
