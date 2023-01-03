@@ -12,25 +12,31 @@ import Modal from "../components/modal";
 const Dashboard = (props) => {
   const route = useRouter();
 
+  //--taking state from context API--
   const user = useContext(noteContext);
-  // const [user1, setUser] = useState("");
-  let [tasks, setTasks] = useState([]);
-  let inputRef = useRef();
-  let [showModal,setShowModal] = useState(false)
 
+  //--Declaring required state--
+  let [tasks, setTasks] = useState([]);
+  let [showModal, setShowModal] = useState(false);
+
+  let inputRef = useRef();
+
+  //--Function to check the app can add tasks or not--
   const handleAddTasks = () => {
     if (tasks.length < 5) {
       setTasks((e) => [...e, inputRef.current.value]);
     } else {
-      setShowModal(true)
+      setShowModal(true);
     }
   };
 
+  //--after each task input field is cleared and focused--
   useEffect(() => {
     inputRef.current.value = "";
     inputRef.current.focus();
   }, [tasks]);
 
+  //--Function connecting firebase to logout --
   function handleLogOut() {
     signOut(auth)
       .then(() => {
@@ -44,7 +50,9 @@ const Dashboard = (props) => {
 
   return (
     <div className="md:h-[100vh] w-[80vw] mt-10 md:mt-0 flex justify-center items-center m-auto">
-      {showModal ? <Modal setShowModal={setShowModal} /> : ''}
+      {/* ---Error Message is Displayed in Modal--- */}
+      {showModal ? <Modal setShowModal={setShowModal} /> : ""}
+
       <div className="w-[450px] h-[80vh] border-[0.5px] border-gray-500 flex m-auto justify-between items-start rounded-md flex-col p-5">
         <section>
           <h1 className="text-lg font-light">Hello</h1>

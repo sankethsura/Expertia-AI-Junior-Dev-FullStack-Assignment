@@ -1,7 +1,10 @@
 import React from "react";
 
 const Date1 = () => {
+  // --Get the 'Present Day' data --
   const date = new Date();
+
+  //--Maintaining Suffix for date in the month--
   let suffix;
   if (date.toString().split(" ")[2] == "01") {
     suffix = "st";

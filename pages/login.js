@@ -15,7 +15,7 @@ const Login = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  //--Declaring required state--
+  //--Declaring required states--
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [passwordShow, setPasswordShow] = useState(false);
@@ -34,7 +34,6 @@ const Login = (props) => {
       setError(err.message);
     }
   };
-  // useEffect(()=>console.log(email.email,password),[email,password])
 
   return (
     <div className="flex items-center justify-center font-thin md:h-[100vh] my-10 md:my-0  w-[80vw] m-auto">
@@ -91,12 +90,13 @@ const Login = (props) => {
           <span>Don't have an account ? </span>
           <span
             onClick={() => route.push("/register")}
-            className="font-medium ml-1"
+            className="font-medium ml-1 cursor-pointer"
           >
             Register
           </span>
         </div>
       </section>
+
       <section className="w-[420px] ml-24 hidden md:flex">
         <img src="https://firebasestorage.googleapis.com/v0/b/expertia-assignment.appspot.com/o/Screenshot%202023-01-02%20at%205.34.01%20PM.png?alt=media&token=c7d9c6a3-8da3-46e4-94ef-01cd92921528" />
       </section>

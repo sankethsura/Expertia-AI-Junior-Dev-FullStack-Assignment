@@ -21,16 +21,14 @@ const Register = (props) => {
   //--Declaring required state--
   const [passwordShow, setPasswordShow] = useState(false);
   const [passwordShow1, setPasswordShow1] = useState(false);
-  const router = useRouter();
-
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [error, setError] = useState("");
+  
+  const router = useRouter();
 
   //---Function connecting firebase to login ---
   const handleSignup = async (e) => {
-    console.log(user.email);
-    console.log(user.name);
     e.preventDefault();
     setError("");
     if (password !== passwordConfirm) {
@@ -126,11 +124,12 @@ const Register = (props) => {
           </button>
           <div className="flex justify-center w-full text-sm mt-10">
             <span>Already have an account ? </span>
-            <span onClick={() => router.push("/")} className="font-medium ml-1">
+            <span onClick={() => router.push("/")} className="font-medium ml-1 cursor-pointer">
               Login
             </span>
           </div>
         </section>
+
         <section className="w-[420px] ml-24 hidden md:flex">
           <img src="https://firebasestorage.googleapis.com/v0/b/expertia-assignment.appspot.com/o/Screenshot%202023-01-02%20at%205.34.01%20PM.png?alt=media&token=c7d9c6a3-8da3-46e4-94ef-01cd92921528" />
         </section>

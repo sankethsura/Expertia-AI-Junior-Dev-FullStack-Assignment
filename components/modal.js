@@ -1,5 +1,7 @@
 import React from "react";
 
+//--Modal is created to show Error message 'Daily Limit Exceeded'--
+
 const Modal = ({ setShowModal }) => {
   return (
     <div className="w-[100vw] h-[100vh] fixed bg-white/70 flex justify-center items-center">
