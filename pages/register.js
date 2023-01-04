@@ -16,6 +16,7 @@ const Register = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
+  const ref = useRef(null);
 
   //--Declaring required state--
   const [passwordShow, setPasswordShow] = useState(false);
@@ -23,7 +24,7 @@ const Register = (props) => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [error, setError] = useState("");
-  
+
   const router = useRouter();
 
   //---Function connecting firebase to login ---
@@ -36,9 +37,11 @@ const Register = (props) => {
     try {
       await createUserWithEmailAndPassword(auth, user.email, password);
       console.log("user logged in with", user.email);
-      localStorage.setItem('email',user.email)
-      localStorage.setItem('password',password)
-      localStorage.setItem('name',nameRef.current.value)
+      if (ref.current.checked) {
+        localStorage.setItem("email", user.email);
+        localStorage.setItem("password", password);
+        localStorage.setItem("name", nameRef.current.value);
+      }
       router.push("/dashboard");
     } catch (err) {
       setError(err.message);
@@ -68,6 +71,7 @@ const Register = (props) => {
             <input
               onChange={() => user.setEmail(() => emailRef.current.value)}
               ref={emailRef}
+              type="email"
               placeholder="Example@gmail.com "
               className="border-[0.6px] text-xs p-3 border-[#282828] rounded-md"
             />
@@ -110,7 +114,7 @@ const Register = (props) => {
           </form>
           <div className="flex items-center justify-between py-3">
             <section className="items-center justify-center flex">
-              <input type="checkbox" />
+              <input ref={ref} type="checkbox" />
               <span className="text-xs ml-2">Remember Me</span>
             </section>
             <section>
@@ -126,7 +130,10 @@ const Register = (props) => {
           </button>
           <div className="flex justify-center w-full text-sm mt-10">
             <span>Already have an account ? </span>
-            <span onClick={() => router.push("/")} className="font-medium ml-1 cursor-pointer">
+            <span
+              onClick={() => router.push("/")}
+              className="font-medium ml-1 cursor-pointer"
+            >
               Login
             </span>
           </div>

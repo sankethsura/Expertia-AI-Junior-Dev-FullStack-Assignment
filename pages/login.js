@@ -14,6 +14,7 @@ const Login = (props) => {
 
   const emailRef = useRef();
   const passwordRef = useRef();
+  const ref = useRef(null);
 
   //--Declaring required states--
   const [password, setPassword] = useState("");
@@ -28,8 +29,10 @@ const Login = (props) => {
     setError("");
     try {
       await signInWithEmailAndPassword(auth, user.email, password);
-      localStorage.setItem('email',user.email)
-      localStorage.setItem('password',password)
+      if (ref.current.checked) {
+        localStorage.setItem("email", user.email);
+        localStorage.setItem("password", password);
+      }
       console.log("user logged in ", user.email);
       route.push("/dashboard");
     } catch (err) {
@@ -38,16 +41,15 @@ const Login = (props) => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem('name')) {
-      user.setEmail(() => localStorage.getItem('email'))
-      setPassword(() => localStorage.getItem('password'))
-      
+    if (localStorage.getItem("name")) {
+      user.setEmail(() => localStorage.getItem("email"));
+      setPassword(() => localStorage.getItem("password"));
+
       signInWithEmailAndPassword(auth, user.email, password);
       console.log("user logged in ", user.email);
       route.push("/dashboard");
     }
-    
-  },[])
+  }, []);
 
   return (
     <div className="flex items-center justify-center font-thin md:h-[100vh] my-10 md:my-0  w-[80vw] m-auto">
@@ -62,6 +64,7 @@ const Login = (props) => {
         <form className="flex flex-col">
           <label className="text-xs font-normal py-2">Email</label>
           <input
+            type="email"
             onChange={() => user.setEmail(() => emailRef.current.value)}
             ref={emailRef}
             placeholder="Example@gmail.com "
@@ -86,7 +89,7 @@ const Login = (props) => {
         </form>
         <div className="flex items-center justify-between py-3">
           <section className="items-center justify-center flex">
-            <input type="checkbox" />
+            <input ref={ref} type="checkbox" />
             <span className="text-xs ml-2">Remember Me</span>
           </section>
           <section>
