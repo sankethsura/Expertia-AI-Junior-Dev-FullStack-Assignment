@@ -36,6 +36,9 @@ const Register = (props) => {
     try {
       await createUserWithEmailAndPassword(auth, user.email, password);
       console.log("user logged in with", user.email);
+      localStorage.setItem('email',user.email)
+      localStorage.setItem('password',password)
+      localStorage.setItem('name',nameRef.current.value)
       router.push("/dashboard");
     } catch (err) {
       setError(err.message);

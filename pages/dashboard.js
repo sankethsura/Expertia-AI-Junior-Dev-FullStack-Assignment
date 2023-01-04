@@ -32,6 +32,7 @@ const Dashboard = (props) => {
 
   //--after each task input field is cleared and focused--
   useEffect(() => {
+    user.setName(()=>localStorage.getItem('name'))
     inputRef.current.value = "";
     inputRef.current.focus();
   }, [tasks]);
@@ -41,6 +42,7 @@ const Dashboard = (props) => {
     signOut(auth)
       .then(() => {
         console.log("logout successful");
+        localStorage.clear()
         route.push("/");
       })
       .catch((error) => {
@@ -52,7 +54,7 @@ const Dashboard = (props) => {
     <div className="md:h-[100vh] w-[80vw] mt-10 md:mt-0 flex justify-center items-center m-auto">
       {/* ---Error Message is Displayed in Modal--- */}
       {showModal ? <Modal setShowModal={setShowModal} /> : ""}
-
+      {/* {window.localStorage.getItem('name')&&window.localStorage.getItem('name')} */}
       <div className="w-[450px] h-[80vh] border-[0.5px] border-gray-500 flex m-auto justify-between items-start rounded-md flex-col p-5">
         <section>
           <h1 className="text-lg font-light">Hello</h1>

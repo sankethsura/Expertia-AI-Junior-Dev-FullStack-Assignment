@@ -28,12 +28,26 @@ const Login = (props) => {
     setError("");
     try {
       await signInWithEmailAndPassword(auth, user.email, password);
+      localStorage.setItem('email',user.email)
+      localStorage.setItem('password',password)
       console.log("user logged in ", user.email);
       route.push("/dashboard");
     } catch (err) {
       setError(err.message);
     }
   };
+
+  useEffect(() => {
+    if (localStorage.getItem('name')) {
+      user.setEmail(() => localStorage.getItem('email'))
+      setPassword(() => localStorage.getItem('password'))
+      
+      signInWithEmailAndPassword(auth, user.email, password);
+      console.log("user logged in ", user.email);
+      route.push("/dashboard");
+    }
+    
+  },[])
 
   return (
     <div className="flex items-center justify-center font-thin md:h-[100vh] my-10 md:my-0  w-[80vw] m-auto">
