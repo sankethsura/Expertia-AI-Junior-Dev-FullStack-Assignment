@@ -43,7 +43,7 @@ const Login = (props) => {
         <h1 className="font-extralight text-xl">Welcome!</h1>
         <div className="py-6">
           <h1 className="font-medium text-2xl">Sign in to</h1>
-          <p className="font-light text-xs">Lorem ipsum dolor sit amet</p>
+          <p className="font-light text-xs">Lorem ipsum is Simple</p>
         </div>
         <form className="flex flex-col">
           <label className="text-xs font-normal py-2">Email</label>
