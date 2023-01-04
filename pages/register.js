@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useContext } from "react";
 import { useRef } from "react";
-import Image from "next/image";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { useRouter } from "next/router";
