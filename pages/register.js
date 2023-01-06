@@ -37,7 +37,8 @@ const Register = (props) => {
     try {
       await createUserWithEmailAndPassword(auth, user.email, password);
       console.log("user logged in with", user.email);
-      user.setName(()=>nameRef.current.value)
+      user.setName(() => nameRef.current.value)
+      console.log(user.name)
       if (ref.current.checked) {
         localStorage.setItem("email", user.email);
         localStorage.setItem("password", password);
