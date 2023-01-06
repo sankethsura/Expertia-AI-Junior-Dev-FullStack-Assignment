@@ -30,6 +30,7 @@ const Login = (props) => {
     try {
       await signInWithEmailAndPassword(auth, user.email, password);
       if (ref.current.checked) {
+        //--handleing local storage--
         localStorage.setItem("email", user.email);
         localStorage.setItem("password", password);
       }
