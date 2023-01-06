@@ -33,6 +33,7 @@ const Dashboard = (props) => {
   //--after each task input field is cleared and focused--
   useEffect(() => {
     // user.setName(()=>localStorage.getItem('name'))
+    console.log(user.name,"inside dashboard")
     inputRef.current.value = "";
     inputRef.current.focus();
   }, [tasks]);
