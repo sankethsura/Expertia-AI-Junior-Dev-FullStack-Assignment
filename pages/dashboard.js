@@ -67,10 +67,8 @@ const Dashboard = (props) => {
           {tasks.map((e, i) => {
             return (
               <div key={i} className="flex justify-start items-center text-sm">
-                <div className="px-2">
-                  <BsDot />
-                </div>
-                <div>{e}</div>
+                
+                <li className="">{ e}</li>
               </div>
             );
           })}
